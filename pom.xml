@@ -61,6 +61,21 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>3.8</version>
+        </dependency>
     </dependencies>
 
     <build>
