@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.AccountuserMapper">
+    <select id="selectaccountuser" resultType="int" parameterType="String">
+        select count(*) from accountuser where account_user_name = #{account_user_name}
+    </select>
+    <insert id="registeraccountuser"  parameterType="Accountuser">
+        insert into accountuser values(null,#{account_user_name},#{account_user_balance},#{account_user_vip})
+    </insert>
+</mapper>

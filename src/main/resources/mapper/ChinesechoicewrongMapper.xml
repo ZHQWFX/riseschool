@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.ChinesechoicewrongMapper">
+    <insert id="addChinesechoicewrong"  parameterType="Chinesechoicewrong">
+        insert into chinesechoicewrong values(null,#{account_user_name},#{question},#{optionA},#{optionB},#{optionC},#{optionD},#{answer},#{analysis})
+    </insert>
+    <select id="findChinesechoicewrong" parameterType="String" resultType="int">
+        select count(*) from chinesechoicewrong where question = #{question}
+    </select>
+</mapper>
