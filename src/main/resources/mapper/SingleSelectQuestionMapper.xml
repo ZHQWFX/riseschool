@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhq.mapper.SingleSelectQuestionMapper">
+<!--    查询单选题列表-->
+<!--    List<SingleSelectQuestion> findSingleSelectQuestionList();-->
+    <select id="findSingleSelectQuestionList" resultType="SingleSelectQuestion">
+        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        from single_select_question
+    </select>
 <!--        批量添加题目-->
 <!--    void insertBatchQuestion(@Param("singleSelectQuestionList") List<SingleSelectQuestion> singleSelectQuestionList);-->
     <insert id="insertBatchQuestion">
@@ -14,4 +20,25 @@
             #{singleSelectQuestion.accountUser},#{singleSelectQuestion.analysis})
         </foreach>
     </insert>
+<!--    根据questionId查询单选题-->
+<!--    SingleSelectQuestion findQuestionByQuestionId(@Param("questionId") Integer questionId);-->
+    <select id="findQuestionByQuestionId" parameterType="Integer" resultType="SingleSelectQuestion">
+        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        from single_select_question
+        where question_id=#{questionId}
+    </select>
+<!--    修改单选题-->
+<!--    void updateByQuestion(@Param("singleSelectQuestion") SingleSelectQuestion singleSelectQuestion);-->
+    <update id="updateByQuestion" parameterType="SingleSelectQuestion">
+        update single_select_question
+        set question=#{question},optionA=#{optionA},optionB=#{optionB},optionC=#{optionC},optionD=#{optionD},
+            answer=#{answer},subject_name=#{subject_name},chapter=#{chapter},account_user=#{accountUser},analysis=#{analysis}
+        where question_id=#{questionId}
+    </update>
+<!--    根据questionId删除单选题-->
+<!--    void deleteQuestionByQuestionId(@Param("questionId") Integer questionId);-->
+    <delete id="deleteQuestionByQuestionId" parameterType="Integer">
+        delete from single_select_question
+        where question_id=#{questionId}
+    </delete>
 </mapper>

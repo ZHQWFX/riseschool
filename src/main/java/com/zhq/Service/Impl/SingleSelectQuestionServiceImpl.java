@@ -1,5 +1,7 @@
 package com.zhq.Service.Impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zhq.Service.SingleSelectQuestionService;
 import com.zhq.mapper.SingleSelectQuestionMapper;
 import com.zhq.pojo.SingleSelectQuestion;
@@ -17,7 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,6 +57,41 @@ public class SingleSelectQuestionServiceImpl implements SingleSelectQuestionServ
             e.printStackTrace();
         }
     }
+
+    @Override
+    public Map<String,Object> findSingleSelectQuestionList(Integer pageNum,Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<SingleSelectQuestion> singleSelectQuestionList = singleSelectQuestionMapper.findSingleSelectQuestionList();
+        PageInfo<SingleSelectQuestion> pageInfo=new PageInfo<>(singleSelectQuestionList);
+        Map<String,Object> map=new HashMap<>();
+        map.put("currentPage",pageInfo.getPageNum());
+        map.put("totalCount",pageInfo.getTotal());
+        map.put("totalPages",pageInfo.getPages());
+        map.put("recods",singleSelectQuestionList);
+        return map;
+    }
+
+    @Override
+    public void insertBatchQuestion(List<SingleSelectQuestion> singleSelectQuestionList) {
+        singleSelectQuestionMapper.insertBatchQuestion(singleSelectQuestionList);
+    }
+
+    @Override
+    public SingleSelectQuestion findQuestionByQuestionId(Integer questionId) {
+        SingleSelectQuestion singleSelectQuestion = singleSelectQuestionMapper.findQuestionByQuestionId(questionId);
+        return singleSelectQuestion;
+    }
+
+    @Override
+    public void updateByQuestion(SingleSelectQuestion singleSelectQuestion) {
+        singleSelectQuestionMapper.updateByQuestion(singleSelectQuestion);
+    }
+
+    @Override
+    public void deleteQuestionByQuestionId(Integer questionId) {
+        singleSelectQuestionMapper.deleteQuestionByQuestionId(questionId);
+    }
+
     public boolean isQuestion(String str) {
         Pattern pattern = Pattern.compile("[0-9].*");
         Matcher isNum = pattern.matcher(str.trim());
@@ -114,7 +153,7 @@ public class SingleSelectQuestionServiceImpl implements SingleSelectQuestionServ
                     optionC=options.substring(options.indexOf("C"),options.indexOf("D"));
                     optionD=options.substring(options.indexOf("D"));
                     SingleSelectQuestion singleSelectQuestion = new SingleSelectQuestion(null,
-                            question, optionA, optionB, optionC, optionD, new String(answers),
+                            question.trim(), optionA, optionB, optionC, optionD, new String(answers),
                             "近代史", "第一章", "chenchenchen", new String(analysis));
                     singleSelectQuestionList.add(singleSelectQuestion);
                 }

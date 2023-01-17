@@ -9,3 +9,8 @@ mybatis:
   mapper-locations: classpath:/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  page-size-zero: true
+  support-methods-arguments: true

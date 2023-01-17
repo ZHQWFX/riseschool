@@ -12,10 +12,38 @@ import java.util.List;
  */
 @Mapper
 public interface SingleSelectQuestionMapper {
+
+    /**
+     *
+     * @return
+     * @Description 查询单选题列表
+     */
+    List<SingleSelectQuestion> findSingleSelectQuestionList();
     /**
      *
      * @param singleSelectQuestionList
      * @Description 批量添加题目
      */
     void insertBatchQuestion(@Param("singleSelectQuestionList") List<SingleSelectQuestion> singleSelectQuestionList);
+
+    /**
+     *
+     * @param questionId
+     * @return 根据id查询单选题
+     */
+    SingleSelectQuestion findQuestionByQuestionId(@Param("questionId") Integer questionId);
+
+    /**
+     *
+     * @param singleSelectQuestion
+     * @Description 修改题库
+     */
+    void updateByQuestion(@Param("singleSelectQuestion") SingleSelectQuestion singleSelectQuestion);
+
+    /**
+     *
+     * @param questionId
+     * @Description 根据questionId删除单选题
+     */
+    void deleteQuestionByQuestionId(@Param("questionId") Integer questionId);
 }
