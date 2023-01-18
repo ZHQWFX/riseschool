@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author chenchenchen
- * @create 2023-01-16 16:39
+ * @create 2023-01-17 15:49
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SingleSelectQuestion {
+public class MultiSelectQuestion {
     private Integer questionId;
     private String question;
     private String optionA;
@@ -23,6 +23,5 @@ public class SingleSelectQuestion {
     private String chapter;
     private String accountUser;
     private String analysis;
-
 
 }

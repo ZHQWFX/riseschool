@@ -12,12 +12,6 @@ import java.util.Map;
  * @create 2023-01-16 16:54
  */
 public interface SingleSelectQuestionService {
-    /**
-     *
-     * @param multipartFile
-     * @Description 批量添加题目
-     */
-    void insertBatchQuestion(MultipartFile multipartFile);
 
     /**
      *
@@ -32,6 +26,13 @@ public interface SingleSelectQuestionService {
      * @Description 批量添加题目
      */
     void insertBatchQuestion(@Param("singleSelectQuestionList") List<SingleSelectQuestion> singleSelectQuestionList);
+
+    /**
+     *
+     * @param singleSelectQuestion
+     * @Description 插入一条记录
+     */
+    void insertOneQuestion(@Param("singleSelectQuestion") SingleSelectQuestion singleSelectQuestion);
 
     /**
      *

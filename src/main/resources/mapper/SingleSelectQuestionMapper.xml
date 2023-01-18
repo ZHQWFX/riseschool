@@ -15,10 +15,22 @@
         insert into single_select_question values
         <foreach collection="singleSelectQuestionList" item="singleSelectQuestion" separator=",">
             (null,#{singleSelectQuestion.question},#{singleSelectQuestion.optionA},#{singleSelectQuestion.optionB},
-            #{singleSelectQuestion.optionC},#{singleSelectQuestion.optionD},#{singleSelectQuestion.answer},
+            #{singleSelectQuestion.optionC},#{singleSelectQuestion.optionD},
+            #{singleSelectQuestion.answer},#{singleSelectQuestion.analysis},
             #{singleSelectQuestion.subjectName},#{singleSelectQuestion.chapter},
-            #{singleSelectQuestion.accountUser},#{singleSelectQuestion.analysis})
+            #{singleSelectQuestion.accountUser})
         </foreach>
+    </insert>
+
+<!--    插入一条记录-->
+<!--    void insertOneQuestion(@Param("singleSelectQuestion") SingleSelectQuestion singleSelectQuestion);-->
+    <insert id="insertOneQuestion">
+        insert into ingle_select_question values
+        (null,#{question},#{optionA},#{optionB},
+            #{optionC},#{optionD},
+            #{answer},#{analysis},
+            #{subjectName},#{chapter},
+            #{accountUser})
     </insert>
 <!--    根据questionId查询单选题-->
 <!--    SingleSelectQuestion findQuestionByQuestionId(@Param("questionId") Integer questionId);-->

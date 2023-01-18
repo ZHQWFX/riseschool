@@ -28,6 +28,12 @@ public interface SingleSelectQuestionMapper {
 
     /**
      *
+     * @param singleSelectQuestion
+     * @Description 插入一条记录
+     */
+    void insertOneQuestion(@Param("singleSelectQuestion") SingleSelectQuestion singleSelectQuestion);
+    /**
+     *
      * @param questionId
      * @return 根据id查询单选题
      */
