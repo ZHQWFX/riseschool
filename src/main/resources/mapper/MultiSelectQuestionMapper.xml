@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.MultiSelectQuestionMapper">
+<!--    查找多选题列表-->
+<!--    List<MultiSelectQuestion> findAllMultiSelectQuestion();-->
+    <select id="findAllMultiSelectQuestion" resultType="MultiSelectQuestion">
+        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        from mutil_select_question
+    </select>
+<!--    批量插入多选题-->
+<!--    void insertBatchMultiSelectQuestion(List<MultiSelectQuestion> multiSelectQuestions);-->
+    <insert id="insertBatchMultiSelectQuestion">
+        insert into multi_select_question values
+        <foreach collection="multiSelectQuestions" item="multiSelectQuestion" separator=",">
+            (null,#{multiSelectQuestion.question},#{multiSelectQuestion.optionA},#{multiSelectQuestion.optionB},
+            #{multiSelectQuestion.optionC},#{multiSelectQuestion.optionD},
+            #{multiSelectQuestion.answer},#{multiSelectQuestion.analysis},
+            #{multiSelectQuestion.subjectName},#{multiSelectQuestion.chapter},
+            #{multiSelectQuestion.accountUser})
+        </foreach>
+    </insert>
+
+<!--    插入一条记录-->
+<!--    void insertOneQuestion(@Param("multiSelectQuestion") MultiSelectQuestion multiSelectQuestion);-->
+    <insert id="insertOneQuestion">
+        insert into multi_select_question values
+            (null,#{question},#{optionA},#{optionB},
+            #{optionC},#{optionD},#{answer},#{analysis},#{subjectName},#{chapter},
+            #{accountUser})
+    </insert>
+
+<!--    根据questionId查询多选题-->
+<!--    void findMultiSelectQuestionByQuestionId(@Param("questionId") Integer questionId);-->
+    <select id="findMultiSelectQuestionByQuestionId" resultType="MultiSelectQuestion">
+        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        from multi_select_question
+        where question_id=#{questionId}
+    </select>
+
+<!--    修改多选题-->
+<!--    void updateMultiSelectQuestion(MultiSelectQuestion multiSelectQuestion);-->
+    <update id="updateMultiSelectQuestion">
+        update mutil_select_question
+        set question=#{question},optionA=#{optionA},optionB=#{optionB},optionC=#{optionC},optionD=#{optionD},
+            answer=#{answer},subject_name=#{subject_name},chapter=#{chapter},account_user=#{accountUser},analysis=#{analysis}
+        where question_id=#{questionId}
+    </update>
+
+<!--    根据questionId删除多选题-->
+<!--    void deleteMultiSelectQuestion(@Param("questionId") Integer questionId);-->
+    <delete id="deleteMultiSelectQuestion">
+        delete from mutil_select_question
+        where question_id=#{questionId}
+    </delete>
+</mapper>
