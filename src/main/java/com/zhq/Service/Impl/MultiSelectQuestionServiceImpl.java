@@ -60,4 +60,14 @@ public class MultiSelectQuestionServiceImpl implements MultiSelectQuestionServic
     public void deleteMultiSelectQuestion(Integer questionId) {
         multiSelectQuestionMapper.deleteMultiSelectQuestion(questionId);
     }
+
+    @Override
+    public boolean deleteQuestionBySubjectId(Integer subjectId) {
+        return multiSelectQuestionMapper.deleteQuestionBySubjectId(subjectId)>0;
+    }
+
+    @Override
+    public boolean deleteQuestionByChapterId(Integer chapterId) {
+        return multiSelectQuestionMapper.deleteQuestionByChapterId(chapterId)>0;
+    }
 }

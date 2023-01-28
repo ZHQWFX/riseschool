@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.SubjectMapper">
+<!--    根据accountUser获取subject-->
+<!--    List<Subject> findSubjectByAccountUser(@Param("accountUser") String accountUser);-->
+    <select id="findSubjectByAccountUser" resultType="Subject">
+        select subject_id,subject_name,account_user
+        from subject
+        where account_user=#{accountUser}
+    </select>
+
+<!--    添加科目-->
+<!--    int insertSubject(@Param("subject")Subject subject);-->
+    <insert id="insertSubject" useGeneratedKeys="true" keyProperty="subjectId" >
+        insert into subject values
+        (null,#{subjectName},#{accountUser})
+    </insert>
+
+<!--    根据subjectId删除科目-->
+<!--    int removeSubjectBySubjectId(@Param("subjectId")Integer subjectId);-->
+    <delete id="removeSubjectBySubjectId">
+        delete from subject
+        where subject_id=#{subjectId}
+    </delete>
+
+<!--    修改科目名-->
+<!--    int updateSubjectName(@Param("subjectId")Integer subjectId,@Param("subjectName")String subjectName);-->
+    <update id="updateSubjectName">
+        update subject
+        set subject_name=#{subjectName}
+        where subject_id=#{subjectId}
+    </update>
+</mapper>

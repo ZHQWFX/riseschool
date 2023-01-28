@@ -32,7 +32,7 @@ public class SingleSelectQuestionServiceImpl implements SingleSelectQuestionServ
         map.put("currentPage", pageInfo.getPageNum());
         map.put("totalCount", pageInfo.getTotal());
         map.put("totalPages", pageInfo.getPages());
-        map.put("recods", singleSelectQuestionList);
+        map.put("records", singleSelectQuestionList);
         return map;
     }
 
@@ -60,6 +60,16 @@ public class SingleSelectQuestionServiceImpl implements SingleSelectQuestionServ
     @Override
     public void deleteQuestionByQuestionId(Integer questionId) {
         singleSelectQuestionMapper.deleteQuestionByQuestionId(questionId);
+    }
+
+    @Override
+    public boolean deleteQuestionBySubjectId(Integer subjectId) {
+        return singleSelectQuestionMapper.deleteQuestionBySubjectId(subjectId)>0;
+    }
+
+    @Override
+    public boolean deleteQuestionByChapterId(Integer chapterId) {
+        return singleSelectQuestionMapper.deleteQuestionByChapterId(chapterId)>0;
     }
 
 }

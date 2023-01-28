@@ -59,4 +59,14 @@ public class TrueOrFalseQuestionServiceImpl implements TrueOrFalseQuestionServic
     public void deleteTrueOrFalseQuestion(Integer questionId) {
         trueOrFalseQuestionMapper.deleteTrueOrFalseQuestion(questionId);
     }
+
+    @Override
+    public boolean deleteQuestionBySubjectId(Integer subjectId) {
+        return trueOrFalseQuestionMapper.deleteQuestionBySubjectId(subjectId)>0;
+    }
+
+    @Override
+    public boolean deleteQuestionByChapterId(Integer chapterId) {
+        return trueOrFalseQuestionMapper.deleteQuestionByChapterId(chapterId)>0;
+    }
 }

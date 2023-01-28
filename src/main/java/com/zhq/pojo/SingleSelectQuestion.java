@@ -19,10 +19,10 @@ public class SingleSelectQuestion {
     private String optionC;
     private String optionD;
     private String answer;
-    private String subjectName;
-    private String chapter;
-    private String accountUser;
     private String analysis;
+    private Integer subjectId;
+    private Integer chapterId;
+
 
 
 }

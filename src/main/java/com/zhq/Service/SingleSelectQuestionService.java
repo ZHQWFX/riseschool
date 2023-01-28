@@ -54,4 +54,18 @@ public interface SingleSelectQuestionService {
      * @Description 根据questionId删除单选题
      */
     void deleteQuestionByQuestionId(@Param("questionId") Integer questionId);
+
+    /**
+     *
+     * @param subjectId
+     * @Description 根据subjectId删除单选题
+     */
+    boolean deleteQuestionBySubjectId(Integer subjectId);
+
+    /**
+     *
+     * @param chapterId
+     * @Description 根据chapterId删除单选题
+     */
+    boolean deleteQuestionByChapterId(Integer chapterId);
 }

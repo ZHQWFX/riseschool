@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.ChapterMapper">
+
+<!--    根据subjectId获取章节-->
+<!--    List<Chapter> findChapterBySubjectId(@Param("subjectId")Integer subjectId);-->
+    <select id="findChapterBySubjectId" resultType="Chapter">
+        select chapter_id,chapter_title,subject_id
+        from chapter
+        where subject_id=#{subjectId}
+    </select>
+
+<!--    新增科目-->
+<!--    int insertChapter(@Param("chapter")Chapter chapter);-->
+    <insert id="insertChapter" useGeneratedKeys="true" keyProperty="chapterId">
+        insert into chapter
+        values(null,#{chapterTitle},#{subjectId})
+    </insert>
+
+<!--    修改章节-->
+<!--    int updateChapterTitleByChapterId(@Param("chapterId")Integer chapterId,@Param("chapterTitle")String chapterTitle);-->
+    <update id="updateChapterTitleByChapterId">
+        update chapter
+        set chapter_title=#{chapterTitle}
+        where chapter_id=#{chapterId}
+    </update>
+
+<!--    根据章节id删除章节-->
+<!--    int removeChapterByChapterId(@Param("chapterId")Integer chapterId);-->
+    <delete id="removeChapterByChapterId">
+        delete from chapter
+        where chapter_id=#{chapterId}
+    </delete>
+
+<!--    根据科目id删除章节-->
+<!--    int removeChapterBySubjectId(@Param("subjectId")Integer subjectId);-->
+    <delete id="removeChapterBySubjectId">
+        delete from chapter
+        where subject_id=#{subjectId}
+    </delete>
+
+    
+</mapper>

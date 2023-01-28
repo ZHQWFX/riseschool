@@ -52,4 +52,18 @@ public interface MultiSelectQuestionService {
      * @Description 根据questionId删除多选题
      */
     void deleteMultiSelectQuestion(@Param("questionId") Integer questionId);
+
+    /**
+     *
+     * @param subjectId
+     * @Description 根据subjectId删除单选题
+     */
+    boolean deleteQuestionBySubjectId(Integer subjectId);
+
+    /**
+     *
+     * @param chapterId
+     * @Description 根据chapterId删除单选题
+     */
+    boolean deleteQuestionByChapterId(Integer chapterId);
 }

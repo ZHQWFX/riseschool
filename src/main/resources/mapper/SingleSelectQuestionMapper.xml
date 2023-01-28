@@ -6,7 +6,7 @@
 <!--    查询单选题列表-->
 <!--    List<SingleSelectQuestion> findSingleSelectQuestionList();-->
     <select id="findSingleSelectQuestionList" resultType="SingleSelectQuestion">
-        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_id,chapter_id,analysis
         from single_select_question
     </select>
 <!--        批量添加题目-->
@@ -17,11 +17,9 @@
             (null,#{singleSelectQuestion.question},#{singleSelectQuestion.optionA},#{singleSelectQuestion.optionB},
             #{singleSelectQuestion.optionC},#{singleSelectQuestion.optionD},
             #{singleSelectQuestion.answer},#{singleSelectQuestion.analysis},
-            #{singleSelectQuestion.subjectName},#{singleSelectQuestion.chapter},
-            #{singleSelectQuestion.accountUser})
+            #{singleSelectQuestion.subjectId},#{singleSelectQuestion.chapterId},
         </foreach>
     </insert>
-
 <!--    插入一条记录-->
 <!--    void insertOneQuestion(@Param("singleSelectQuestion") SingleSelectQuestion singleSelectQuestion);-->
     <insert id="insertOneQuestion">
@@ -29,13 +27,12 @@
         (null,#{question},#{optionA},#{optionB},
             #{optionC},#{optionD},
             #{answer},#{analysis},
-            #{subjectName},#{chapter},
-            #{accountUser})
+            #{subjectId},#{chapterId},
     </insert>
 <!--    根据questionId查询单选题-->
 <!--    SingleSelectQuestion findQuestionByQuestionId(@Param("questionId") Integer questionId);-->
     <select id="findQuestionByQuestionId" parameterType="Integer" resultType="SingleSelectQuestion">
-        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_id,chapter_id,analysis
         from single_select_question
         where question_id=#{questionId}
     </select>
@@ -44,7 +41,7 @@
     <update id="updateByQuestion" parameterType="SingleSelectQuestion">
         update single_select_question
         set question=#{question},optionA=#{optionA},optionB=#{optionB},optionC=#{optionC},optionD=#{optionD},
-            answer=#{answer},subject_name=#{subject_name},chapter=#{chapter},account_user=#{accountUser},analysis=#{analysis}
+            answer=#{answer},subject_id=#{subjectId},chapter_id=#{chapterId},analysis=#{analysis}
         where question_id=#{questionId}
     </update>
 <!--    根据questionId删除单选题-->
@@ -52,5 +49,17 @@
     <delete id="deleteQuestionByQuestionId" parameterType="Integer">
         delete from single_select_question
         where question_id=#{questionId}
+    </delete>
+<!--    根据subjectId删除单选题-->
+<!--    void deleteQuestionBySubjectId(@Param("subjectId") Integer subjectId);-->
+    <delete id="deleteQuestionBySubjectId">
+        delete from single_select_question
+        where subject_id=#{subjectId}
+    </delete>
+<!--    根据chapterId删除单选题-->
+<!--    void deleteQuestionByChapterId(@Param("chapterId") Integer chapterId);-->
+    <delete id="deleteQuestionByChapterId">
+        delete from single_select_question
+        where chapter_id=#{chapterId}
     </delete>
 </mapper>

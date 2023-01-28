@@ -6,7 +6,7 @@
 <!--    查找多选题列表-->
 <!--    List<MultiSelectQuestion> findAllMultiSelectQuestion();-->
     <select id="findAllMultiSelectQuestion" resultType="MultiSelectQuestion">
-        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        select question_id,question,optionA,optionB,optionC,optionD,answer,analysis,subject_id,chapter_id
         from mutil_select_question
     </select>
 <!--    批量插入多选题-->
@@ -17,8 +17,7 @@
             (null,#{multiSelectQuestion.question},#{multiSelectQuestion.optionA},#{multiSelectQuestion.optionB},
             #{multiSelectQuestion.optionC},#{multiSelectQuestion.optionD},
             #{multiSelectQuestion.answer},#{multiSelectQuestion.analysis},
-            #{multiSelectQuestion.subjectName},#{multiSelectQuestion.chapter},
-            #{multiSelectQuestion.accountUser})
+            #{multiSelectQuestion.subjectId},#{multiSelectQuestion.chapterId}
         </foreach>
     </insert>
 
@@ -27,14 +26,13 @@
     <insert id="insertOneQuestion">
         insert into multi_select_question values
             (null,#{question},#{optionA},#{optionB},
-            #{optionC},#{optionD},#{answer},#{analysis},#{subjectName},#{chapter},
-            #{accountUser})
+            #{optionC},#{optionD},#{answer},#{analysis},#{subjectId},#{chapterId})
     </insert>
 
 <!--    根据questionId查询多选题-->
 <!--    void findMultiSelectQuestionByQuestionId(@Param("questionId") Integer questionId);-->
     <select id="findMultiSelectQuestionByQuestionId" resultType="MultiSelectQuestion">
-        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_name,chapter,account_user,analysis
+        select question_id,question,optionA,optionB,optionC,optionD,answer,analysis,subject_id,chapter_id
         from multi_select_question
         where question_id=#{questionId}
     </select>
@@ -44,7 +42,7 @@
     <update id="updateMultiSelectQuestion">
         update mutil_select_question
         set question=#{question},optionA=#{optionA},optionB=#{optionB},optionC=#{optionC},optionD=#{optionD},
-            answer=#{answer},subject_name=#{subject_name},chapter=#{chapter},account_user=#{accountUser},analysis=#{analysis}
+            answer=#{answer},subject_id=#{subjectId},chapter_id=#{chapterId},analysis=#{analysis}
         where question_id=#{questionId}
     </update>
 
@@ -53,5 +51,19 @@
     <delete id="deleteMultiSelectQuestion">
         delete from mutil_select_question
         where question_id=#{questionId}
+    </delete>
+
+<!--    根据subjectId删除单选题-->
+<!--    int deleteQuestionBySubjectId(@Param("subjectId") Integer subjectId);-->
+    <delete id="deleteQuestionBySubjectId">
+        delete from mutil_select_question
+        where subject_id=#{subjectId}
+    </delete>
+
+<!--    根据chapterId删除单选题-->
+<!--    int deleteQuestionByChapterId(@Param("chapterId") Integer chapterId);-->
+    <delete id="deleteQuestionByChapterId">
+        delete from mutil_select_question
+        where chapter_id=#{chapterId}
     </delete>
 </mapper>

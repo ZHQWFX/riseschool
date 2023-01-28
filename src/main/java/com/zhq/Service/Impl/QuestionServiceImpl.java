@@ -109,7 +109,7 @@ public class QuestionServiceImpl implements QuestionService {
             }
             switch (type) {
                 case 1:
-                    i = parseSinglSelectQuestion(strings, i, question);
+                    i = parseSingleSelectQuestion(strings, i, question);
                     break;
                 case 2:
                     i = parseMultiSelectQuestion(strings, i, question);
@@ -130,7 +130,7 @@ public class QuestionServiceImpl implements QuestionService {
         return question;
     }
 
-    private int parseSinglSelectQuestion(String[] strings, Integer i,
+    private int parseSingleSelectQuestion(String[] strings, Integer i,
                                          Question questions) {
         if (isQuestion(strings[i])) {
             String question = strings[i];
@@ -164,8 +164,8 @@ public class QuestionServiceImpl implements QuestionService {
                 optionC = options.substring(options.indexOf("C"), options.indexOf("D"));
                 optionD = options.substring(options.indexOf("D"));
                 SingleSelectQuestion singleSelectQuestion = new SingleSelectQuestion(null,
-                        question.trim(), optionA.trim(), optionB.trim(), optionC.trim(), optionD.trim(), new String(answers),
-                        "计算机", "第一章", "chenchenchen", new String(analysis)
+                        question.trim(), optionA.trim(), optionB.trim(), optionC.trim(), optionD.trim(), new String(answers)
+                        ,new String(analysis), null, null
                 );
                 if (questions.getSingleSelectQuestions() == null) {
                     List<SingleSelectQuestion> list = new ArrayList<>();
@@ -212,7 +212,7 @@ public class QuestionServiceImpl implements QuestionService {
                 optionD = options.substring(options.indexOf("D"));
                 MultiSelectQuestion multiSelectQuestion = new MultiSelectQuestion(null,
                         question.trim(), optionA.trim(), optionB.trim(), optionC.trim(), optionD.trim(), new String(answers),
-                        "计算机", "第一章", "chenchenchen", new String(analysis)
+                        new String(analysis),null, null
                 );
                 if (questions.getMultiSelectQuestions() == null) {
                     List<MultiSelectQuestion> list = new ArrayList<>();
@@ -245,8 +245,9 @@ public class QuestionServiceImpl implements QuestionService {
             i--;
             if (question.length() > 0) {
                 TrueOrFalseQuestion trueOrFalseQuestion = new TrueOrFalseQuestion(null,
-                        question.trim(), new String(answers), "计算机", "第一章",
-                        "chenchenchen", new String(analysis));
+                        question.trim(), new String(answers), new String(analysis),
+                        null, null
+                        );
                 if(questions.getTrueOrFalseQuestions()==null){
                     List<TrueOrFalseQuestion> list=new ArrayList<>();
                     questions.setTrueOrFalseQuestions(list);
