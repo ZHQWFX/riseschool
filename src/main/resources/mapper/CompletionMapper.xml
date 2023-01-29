@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.CompletionMapper">
+    <select id="allcompletion" resultType="Completion">
+        select * from completion where subject = #{subject} and account_user_name is null
+    </select>
+    <select id="countcompletion" resultType="int">
+        select count(*) from completion
+    </select>
+</mapper>

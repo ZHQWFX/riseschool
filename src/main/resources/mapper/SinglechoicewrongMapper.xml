@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.SinglechoicewrongMapper">
+
+
+    <!-- 将做错的题目添加进错题库
+    */
+    int addSinglechoicewrong(Singlechoicewrong singlechoicewrong);-->
+    <insert id="addsinglechoicewrong"  parameterType="Singlechoicewrong">
+        insert into singlechoicewrong values(null,#{question},#{optionA},#{optionB},#{optionC},#{optionD},#{answer},#{subject},#{analysis},#{account_user_name})
+    </insert>
+
+
+    <!-- 查询错题库中是否有当前做错的题目  如果存在则不添加
+    int findsinglechoicewrong(String question);-->
+    <select id="findsinglechoicewrong" parameterType="String" resultType="int">
+        select count(*) from singlechoicewrong where question = #{question} and subject = #{subject}
+    </select>
+
+
+    <!--在错题库中答对的题目将其删除
+    void deletesinglechoicewrong(int id); -->
+    <delete id="deletesinglechoicewrong" parameterType="Integer">
+        delete from singlechoicewrong where id = #{id}
+    </delete>
+
+    <!--Description 查找错题库中的所有错题
+    List<Singlechoicewrong> allsinglechoicewrong();-->
+    <select id="allsinglechoicewrong" resultType="Singlechoicewrong">
+        select * from singlechoicewrong where subject = #{subject} and account_user_name = #{account_user_name}
+    </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.CompletionwrongMapper">
+    <insert id="addcompletionwrong"  parameterType="Completionwrong">
+        insert into completionwrong values(null,#{question},#{answer},#{subject},#{chapter},#{analysis},#{account_user_name},#{label});
+    </insert>
+    <select id="findcompletionwrongquestion" parameterType="String" resultType="int">
+        select count(*) from completionwrong where question = #{question}
+    </select>
+    <select id="allcompletionwrong" parameterType="String" resultType="Completionwrong">
+        select * from completionwrong where subject = #{subject} and account_user_name = #{account_user_name}
+    </select>
+    <delete id="deletecompletionwrong" parameterType="int">
+        delete from completionwrong where id = #{id}
+    </delete>
+</mapper>

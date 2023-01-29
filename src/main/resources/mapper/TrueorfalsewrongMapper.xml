@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.TrueorfalsewrongMapper">
+
+    <!--    插入错题库-->
+    <!--   void inserttrueorfalsewrong(Trueorfalsewrong trueorfalsewrong); -->
+    <insert id="inserttrueorfalsewrong">
+        insert into trueorfalsewrong values(null,#{question},#{answer},#{subject},#{chapter},#{analysis},#{account_user_name},#{label})
+    </insert>
+    <!--    本题答错后，查询错题库内是否存在-->
+    <!--   int querytrueorfalsewrong(String question); -->
+    <select id="querytrueorfalsewrong" parameterType="String" resultType="int">
+        select count(*) from trueorfalsewrong where question = #{question}
+    </select>
+
+    <!-- 查询错题库中的所有题目-->
+    <!-- List<Trueorfalsewrong> alltrueorfalsewrong();-->
+    <select id="alltrueorfalsewrong" resultType="Trueorfalsewrong" parameterType="String">
+        select * from trueorfalsewrong where subject = #{subject} and account_user_name = #{account_user_name}
+    </select>
+
+    <!-- 错题库中的问题答对后根据id将其删除
+    int deletetrueorfalsewrong(int id);-->
+    <delete id="deletetrueorfalsewrong" parameterType="Integer">
+        delete from trueorfalsewrong where id = #{id}
+    </delete>
+</mapper>

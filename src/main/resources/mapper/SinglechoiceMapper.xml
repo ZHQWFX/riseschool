@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhq.mapper.SinglechoiceMapper">
+
+
+    <!--添加单选题
+    int addsinglechoice(Singlechoice singlechoice);-->
+    <insert id="addsinglechoice"  parameterType="Singlechoice">
+        insert into singlechoice values(null,#{question},#{optionA},#{optionB},#{optionC},#{optionD},#{answer},#{subject},#{analysis})
+    </insert>
+
+    <!--根据科目查询所有单选题
+    List<Singlechoice> allsinglechoice(String subject); -->
+
+
+    <select id="allsinglechoice" resultType="Singlechoice" parameterType="String">
+        select * from singlechoice where subject = #{subject}
+    </select>
+
+    <!--根据科目查询出该科目题目总数
+    int countsinglechoice(String subject);-->
+    <select id="countsinglechoice" parameterType="String" resultType="Integer">
+        select count(*) from singlechoice where subject = #{subject}
+    </select>
+</mapper>
