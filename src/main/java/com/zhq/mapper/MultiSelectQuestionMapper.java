@@ -53,4 +53,18 @@ public interface MultiSelectQuestionMapper {
      * @Description 根据questionId删除多选题
      */
     void deleteMultiSelectQuestion(@Param("questionId") Integer questionId);
+
+    /**
+     *
+     * @param subjectId
+     * @Description 根据subjectId删除单选题
+     */
+    int deleteQuestionBySubjectId(@Param("subjectId") Integer subjectId);
+
+    /**
+     *
+     * @param chapterId
+     * @Description 根据chapterId删除单选题
+     */
+    int deleteQuestionByChapterId(@Param("chapterId") Integer chapterId);
 }

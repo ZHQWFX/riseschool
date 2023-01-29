@@ -53,4 +53,18 @@
         delete from true_or_false_question
         where question_id=#{questionId}
     </delete>
+
+<!--    根据subjectId删除单选题-->
+<!--    int deleteQuestionBySubjectId(@Param("subjectId") Integer subjectId);-->
+    <delete id="deleteQuestionBySubjectId">
+        delete from true_or_false_question
+        where subject_id=#{subjectId}
+    </delete>
+
+<!--    根据chapterId删除单选题-->
+<!--    int deleteQuestionByChapterId(@Param("chapterId") Integer chapterId);-->
+    <delete id="deleteQuestionByChapterId">
+        delete from true_or_false_question
+        where chapter_id=#{chapterId}
+    </delete>
 </mapper>
