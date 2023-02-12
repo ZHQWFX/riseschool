@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class SinglechoiceController {
@@ -32,7 +35,10 @@ public class SinglechoiceController {
     @RequestMapping("/allsinglechoice/{subject}")
     @ResponseBody
     public List<Singlechoice> allsinglechoice(@PathVariable String subject){
-        return singlechoiceService.allsinglechoice(subject);
+        List list = new ArrayList(singlechoiceService.allsinglechoice(subject));
+        Random random = new Random();
+        Collections.shuffle(list,random);
+        return list;
     }
 
     /**

@@ -12,4 +12,6 @@ public class Completion {
     private String analysis;
     private String account_user_name;
     private String label;
+    private String[] answers;
+
 }

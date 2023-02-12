@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class TrueorfalseController {
@@ -16,7 +19,10 @@ public class TrueorfalseController {
     TrueorfalseService trueorfalseService;
 
     @RequestMapping("/alltrueorfalse/{subject}")
-    public List<Trueorfalse> alltrueorfalse(@PathVariable String subject){
-        return trueorfalseService.alltrueorfalse(subject);
+    public List alltrueorfalse(@PathVariable String subject){
+        List list = new ArrayList(trueorfalseService.alltrueorfalse(subject));
+        Random random = new Random();
+        Collections.shuffle(list,random);
+        return list;
     }
 }

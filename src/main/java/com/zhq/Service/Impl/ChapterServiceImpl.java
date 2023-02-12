@@ -6,6 +6,7 @@ import com.zhq.Service.SingleSelectQuestionService;
 import com.zhq.Service.TrueOrFalseQuestionService;
 import com.zhq.mapper.ChapterMapper;
 import com.zhq.pojo.Chapter;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author chenchenchen
  * @create 2023-01-27 19:11
  */
+@Service
 public class ChapterServiceImpl implements ChapterService {
 
     @Resource

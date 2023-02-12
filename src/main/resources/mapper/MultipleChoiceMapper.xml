@@ -6,7 +6,7 @@
     <!-- 查找出所有的多选题
      List<MultipleChoice> allmultiplechoice();-->
     <select id="allmultiplechoice" resultType="MultipleChoice">
-        select * from multiple_choice
+        select * from multiple_choice where subject = #{subject}
     </select>
 </mapper>
 

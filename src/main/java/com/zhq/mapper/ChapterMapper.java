@@ -1,6 +1,7 @@
 package com.zhq.mapper;
 
 import com.zhq.pojo.Chapter;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
  * @author chenchenchen
  * @create 2023-01-26 20:57
  */
+@Mapper
 public interface ChapterMapper {
     /**
      *

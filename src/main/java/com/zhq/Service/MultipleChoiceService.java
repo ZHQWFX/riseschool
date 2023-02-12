@@ -3,6 +3,7 @@ package com.zhq.Service;
 import com.zhq.pojo.MultipleChoice;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ZHQ
@@ -14,5 +15,13 @@ public interface MultipleChoiceService {
      * @return List<MultipleChoice>
      * @Description 查找出所有的多选题
      */
-    List<MultipleChoice> allmultiplechoice();
+    List<MultipleChoice> allmultiplechoice(String subject);
+
+    /**
+     *
+     * @return List<MultipleChoice>
+     * @Description 分页查找出所有的多选题
+     */
+    Map<String,Object> pageallmultiplechoice(Integer pageNum,Integer pageSize);
+
 }

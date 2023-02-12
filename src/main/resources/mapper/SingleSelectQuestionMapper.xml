@@ -6,7 +6,7 @@
 <!--    查询单选题列表-->
 <!--    List<SingleSelectQuestion> findSingleSelectQuestionList();-->
     <select id="findSingleSelectQuestionList" resultType="SingleSelectQuestion">
-        select question_id,question,optionA,optionB,optionC,optionD,answer,subject_id,chapter_id,analysis
+        select *
         from single_select_question
     </select>
 <!--        批量添加题目-->

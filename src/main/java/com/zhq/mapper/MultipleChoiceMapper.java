@@ -16,7 +16,7 @@ public interface MultipleChoiceMapper {
      * @return List<MultipleChoice>
      * @Description 查找出所有的多选题
      */
-    List<MultipleChoice> allmultiplechoice();
+    List<MultipleChoice> allmultiplechoice(String subject);
 
 
 }

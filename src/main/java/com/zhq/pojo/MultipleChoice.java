@@ -20,4 +20,5 @@ public class MultipleChoice {
     private String answer;
     private String subject;
     private String analysis;
+    private String answers[];
 }
